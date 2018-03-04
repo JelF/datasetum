@@ -1,0 +1,18 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - bin/**/*
+
+Metrics/BlockLength:
+  # Block length should be limited by context where it called
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+Style/StructInheritance:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
