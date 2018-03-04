@@ -16,7 +16,7 @@ RSpec.describe Datasetum::Dataset do
   let(:data) { [dataset.new(123), dataset.new(456)] }
 
   before 'specify data as data source' do
-    dataset.send(:data_source) { data }
+    dataset.send(:data_source=, -> { data })
   end
 
   it 'loads data' do
