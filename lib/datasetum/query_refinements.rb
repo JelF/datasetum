@@ -16,9 +16,9 @@ module Datasetum
     #     [123, []].safe_to_array # => [123, []]
     #   @return [Array]
 
-    # @!method match_elem?(x)
+    # @!method match_elem?(elem)
     #   primary match expression. Not expect to receive arrays
-    #   @param x [Object] not array!
+    #   @param elem [Object] not array!
     #   @example Object
     #     123.match_elem? 123 # => true
     #     123.match_elem? 456 # => false
@@ -30,9 +30,9 @@ module Datasetum
     #     [123, 312].match_elem? 456 # => false
     #   @return [Boolean]
 
-    # @!method match_any?(xs)
+    # @!method match_any?(elems)
     #   match any element of array. Objects casted to array via #safe_to_array
-    #   @param xs [Object]
+    #   @param elems [Object]
     #   @example
     #     123.match_any? 123 # => true
     #     123.match_any? [123, 456] # => true
@@ -40,9 +40,9 @@ module Datasetum
     #     123.match_any? 100..200 # => true and really slow
     #   @return [Boolean]
 
-    # @!method match_all?(xs)
+    # @!method match_all?(elems)
     #   match all elements of array. Objects casted to array via #safe_to_array
-    #   @param xs [Object]
+    #   @param elems [Object]
     #   @example
     #     123.match_all? 123 # => true
     #     123.match_all? [123] # => true
@@ -54,16 +54,16 @@ module Datasetum
         [self]
       end
 
-      def match_elem?(x)
-        self == x
+      def match_elem?(elem)
+        self == elem
       end
 
-      def match_any?(xs)
-        xs.safe_to_array.any? { |x| match_elem?(x) }
+      def match_any?(elems)
+        elems.safe_to_array.any? { |elem| match_elem?(elem) }
       end
 
-      def match_all?(xs)
-        xs.safe_to_array.all? { |x| match_elem?(x) }
+      def match_all?(elems)
+        elems.safe_to_array.all? { |elem| match_elem?(elem) }
       end
     end
 
@@ -80,8 +80,8 @@ module Datasetum
         self
       end
 
-      def match_elem?(x)
-        any? { |t| t.match_elem?(x) }
+      def match_elem?(elem)
+        any? { |t| t.match_elem?(elem) }
       end
     end
 
