@@ -63,7 +63,9 @@ module Datasetum
       end
 
       def match_all?(elems)
-        elems.safe_to_array.all? { |elem| match_elem?(elem) }
+        array = elems.safe_to_array
+        return false if array.empty?
+        array.all? { |elem| match_elem?(elem) }
       end
     end
 

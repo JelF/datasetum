@@ -16,3 +16,6 @@ Style/StructInheritance:
 
 RSpec/ExampleLength:
   Max: 10
+
+RSpec/PredicateMatcher:
+  Enabled: false
